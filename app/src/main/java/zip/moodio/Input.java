@@ -32,17 +32,17 @@ public class Input implements AllInput
         return type;
     }
 
-    public Type trigger()
+    public static Type trigger()
     {
         return Type.TRIGGER;
     }
 
-    public Type belief()
+    public static Type belief()
     {
         return Type.BELIEF;
     }
 
-    public Type behavior()
+    public static Type behavior()
     {
         return Type.BEHAVIOR;
     }
