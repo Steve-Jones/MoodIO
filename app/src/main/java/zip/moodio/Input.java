@@ -9,7 +9,7 @@ public class Input implements AllInput
 
 {
     private String name = null;
-    public enum Type {TRIGGER, BELIEF, BEHAVIOR}
+    private enum Type {TRIGGER, BELIEF, BEHAVIOR}
     private Type type = null;
 
     public void setName(String nameIn)
@@ -30,5 +30,20 @@ public class Input implements AllInput
     public Type getType()
     {
         return type;
+    }
+
+    public Type trigger()
+    {
+        return Type.TRIGGER;
+    }
+
+    public Type belief()
+    {
+        return Type.BELIEF;
+    }
+
+    public Type behavior()
+    {
+        return Type.BEHAVIOR;
     }
 }
