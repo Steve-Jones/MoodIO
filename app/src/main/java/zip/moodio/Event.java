@@ -12,7 +12,7 @@ public class Event
     private Mood mood = null;
     private List<Input> inputs = null;
     private String annotation = null;
-    private Timestamp timestamp = null;
+    //private Timestamp timestamp = null;
     public Event(Mood mood, List<Input> inputs)
     {
         this.mood = mood;
@@ -45,21 +45,26 @@ public class Event
         return inputs;
     }
 
+    public void setAnnotation(String annotationIn)
+    {
+        annotation = annotationIn;
+    }
+
     public String getAnnotation()
     {
         return annotation;
     }
 
-    public void setTimeStamp()
-    {
-        Date date = new Date();
-        timestamp = new Timestamp(date.getTime());
-    }
-
-
-    public Timestamp getTimestamp()
-    {
-        return timestamp;
-    }
+//    public void setTimeStamp()
+//    {
+//        Date date = new Date();
+//        timestamp = new Timestamp(date.getTime());
+//    }
+//
+//
+//    public Timestamp getTimestamp()
+//    {
+//        return timestamp;
+//    }
 
 }
