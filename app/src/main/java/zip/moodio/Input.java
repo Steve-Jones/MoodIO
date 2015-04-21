@@ -9,7 +9,7 @@ public class Input implements AllInput
 
 {
     private String name = null;
-    private enum Type {TRIGGER, BELIEF, BEHAVIOR}
+    public enum Type {TRIGGER, BELIEF, BEHAVIOR}
     private Type type = null;
 
     public void setName(String nameIn)
