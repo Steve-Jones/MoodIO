@@ -22,27 +22,28 @@
                 android:padding="5dp">
 
                 <LinearLayout
-                    android:id="@+id/tab1"
+                    android:id="@+id/logTab"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:orientation="vertical"></LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/tab2"
+                    android:id="@+id/dataTab"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:orientation="vertical"></LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/tab3"
+                    android:id="@+id/helpTab"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:orientation="vertical"></LinearLayout>
                 <LinearLayout
-                    android:id="@+id/tab4"
+                    android:id="@+id/settingsTab"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:orientation="vertical"></LinearLayout>
+                    android:orientation="vertical"
+                    android:focusableInTouchMode="false"></LinearLayout>
             </FrameLayout>
             <TabWidget
                 android:id="@android:id/tabs"
