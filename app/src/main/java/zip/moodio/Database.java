@@ -18,7 +18,7 @@ import android.util.Log;
 public class Database extends SQLiteOpenHelper{
     private static final String DATABASE_NAME = "MoodDB";
     private static final int DATABASE_VERSION = 1;
-    private static final String TAG = MyActivity.class.getSimpleName();
+    private static final String TAG = HomeActivity.class.getSimpleName();
     //SQLiteDatabase db = this.getWritableDatabase();
 
     public Database(Context context) {
