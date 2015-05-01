@@ -3,9 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MoodIO.iml" filepath="$PROJECT_DIR$/MoodIO.iml" />
-      <module fileurl="file://$USER_HOME$/Google Drive/School/CS320/MoodIO_AndroidDevLocation/Mood_IO/MoodIO/MoodIO.iml" filepath="$USER_HOME$/Google Drive/School/CS320/MoodIO_AndroidDevLocation/Mood_IO/MoodIO/MoodIO.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$USER_HOME$/Google Drive/School/CS320/MoodIO_AndroidDevLocation/Mood_IO/MoodIO/app/app.iml" filepath="$USER_HOME$/Google Drive/School/CS320/MoodIO_AndroidDevLocation/Mood_IO/MoodIO/app/app.iml" />
     </modules>
   </component>
 </project>

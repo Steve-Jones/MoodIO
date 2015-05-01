@@ -12,7 +12,7 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:orientation="vertical"
-            android:padding="5dp">>
+            android:padding="5dp">
 
             <FrameLayout
                 android:id="@android:id/tabcontent"
@@ -25,32 +25,33 @@
                     android:id="@+id/logTab"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:orientation="vertical"></LinearLayout>
+                    android:orientation="vertical"
+                    android:onClick="goToLogScreen" />
 
                 <LinearLayout
                     android:id="@+id/dataTab"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:orientation="vertical"></LinearLayout>
+                    android:orientation="vertical" />
 
                 <LinearLayout
                     android:id="@+id/helpTab"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:orientation="vertical"></LinearLayout>
+                    android:orientation="vertical" />
                 <LinearLayout
                     android:id="@+id/settingsTab"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:orientation="vertical"
-                    android:focusableInTouchMode="false"></LinearLayout>
+                    android:focusableInTouchMode="false" />
             </FrameLayout>
             <TabWidget
                 android:id="@android:id/tabs"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:layout_marginBottom="-4dp"></TabWidget>
+                android:layout_marginBottom="-4dp" />
 
 
         </LinearLayout>
