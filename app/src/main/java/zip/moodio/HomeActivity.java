@@ -71,4 +71,5 @@ public class HomeActivity extends ActionBarActivity {
         Intent intent = new Intent(HomeActivity.this, LogActivity.class);
         startActivity(intent);
     }
+
 }

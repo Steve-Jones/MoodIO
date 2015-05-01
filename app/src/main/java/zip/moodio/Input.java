@@ -6,11 +6,16 @@ import zip.moodio.AllInput;
  * Created by Zach on 4/18/2015.
  */
 public class Input implements AllInput
-
 {
     private String name = null;
     private enum Type {TRIGGER, BELIEF, BEHAVIOR}
     private Type type = null;
+
+    public Input(String name, Type type)
+    {
+        this.name = name;
+        this.type = type;
+    }
 
     public void setName(String nameIn)
     {

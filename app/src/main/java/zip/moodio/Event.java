@@ -13,10 +13,11 @@ public class Event
     private List<Input> inputs = null;
     private String annotation = null;
     //private Timestamp timestamp = null;
-    public Event(Mood mood, List<Input> inputs)
+    public Event(Mood mood, List<Input> inputs, String annotation)
     {
         this.mood = mood;
         this.inputs = inputs;
+        this.annotation = annotation;
     }
 
     public boolean haveMood()

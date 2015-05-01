@@ -5,7 +5,10 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.ExpandableListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,9 +21,15 @@ public class LogActivity extends ActionBarActivity {
     private List<String> logTypesList;
     private ExpandableListView expList;
     private LogsAdapter logsAdapter;
+    private String moodName = null;
+    private int moodIntensity = -1;
+    private String triggerName = null;
+    private String beliefName = null;
+    private String behaviorName = null;
+    private String annotation = null;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log);
         expList = (ExpandableListView)findViewById(R.id.expList);
@@ -28,6 +37,52 @@ public class LogActivity extends ActionBarActivity {
         logTypesList = new ArrayList<String>(logCategories.keySet());
         logsAdapter = new LogsAdapter(this, logCategories, logTypesList);
         expList.setAdapter(logsAdapter);
+
+//        expList.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+//
+//            public void onGroupExpand(int groupPosition) {
+//                Toast.makeText(getBaseContext(), logTypesList.get(groupPosition) + " is expanded", Toast.LENGTH_LONG).show();
+//            }
+//        });
+//
+//        expList.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
+//
+//            public void onGroupCollapse(int groupPosition) {
+//                Toast.makeText(getBaseContext(), logTypesList.get(groupPosition) + " is collapsed", Toast.LENGTH_LONG).show();
+//            }
+//        });
+
+        expList.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id)
+            {
+                String itemInCategory = logCategories.get(logTypesList.get(groupPosition)).get(childPosition);
+                String category = logTypesList.get(groupPosition);
+                Toast.makeText(getBaseContext(), itemInCategory + " from category " + category + " is selected", Toast.LENGTH_LONG).show();
+
+                if(category.equals("Moods"))
+                {
+                    moodName = itemInCategory;
+                }
+
+                else if(category.equals("Triggers"))
+                {
+                    triggerName = itemInCategory;
+                }
+
+                else if(category.equals("Beliefs"))
+                {
+                    beliefName = itemInCategory;
+                }
+
+                else if(category.equals("Behaviors"))
+                {
+                    behaviorName = itemInCategory;
+                }
+
+                return false;
+            }
+        });
 
     }
 
@@ -51,5 +106,58 @@ public class LogActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void submit(View view)
+    {
+        if(moodName != null && moodIntensity != -1)
+        {
+            Mood mood = new Mood(moodName, moodIntensity);
+            List<Input> inputs = new ArrayList<>();
+            EditText annotationText = (EditText) findViewById(R.id.annotation);
+            annotation = annotationText.getText().toString();
+
+            if(triggerName != null)
+            {
+                Input inputTrigger = new Input(triggerName, Input.trigger());
+                inputs.add(inputTrigger);
+            }
+
+            if(beliefName != null)
+            {
+                Input inputBelief = new Input(beliefName, Input.belief());
+                inputs.add(inputBelief);
+            }
+
+            if(behaviorName != null)
+            {
+                Input inputBehavior = new Input(behaviorName, Input.behavior());
+                inputs.add(inputBehavior);
+            }
+
+            if(annotation.equals("Enter annotation here..."))
+            {
+                annotation = null;
+            }
+
+            Event event = new Event(mood, inputs, annotation);
+            Toast.makeText(getBaseContext(), "You have successfully logged an entry", Toast.LENGTH_LONG).show();
+            //ZJB add event to database here
+        }
+
+        else if(moodName == null)
+        {
+            Toast.makeText(getBaseContext(), "You must enter a mood before submitting", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        else if(moodIntensity == -1)
+        {
+            Toast.makeText(getBaseContext(), "You must enter a mood intensity before submitting", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        Intent intent = new Intent(LogActivity.this, HomeActivity.class);
+        startActivity(intent);
     }
 }

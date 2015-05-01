@@ -8,8 +8,13 @@ import zip.moodio.AllInput;
 public class Mood implements AllInput
 {
     private String name = null;
-
     private int intensity = 0;
+
+    public Mood(String name, int intensity)
+    {
+        this.name = name;
+        this.intensity = intensity;
+    }
 
     public void setName(String nameIn)
     {

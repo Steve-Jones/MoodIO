@@ -100,8 +100,9 @@ public class LogsAdapter extends BaseExpandableListAdapter
         return convertView;
     }
 
-    @Override
-    public boolean isChildSelectable(int groupPosition, int childPosition) {
-        return false;
+
+    public boolean isChildSelectable(int groupPosition, int childPosition)
+    {
+        return true;
     }
 }
