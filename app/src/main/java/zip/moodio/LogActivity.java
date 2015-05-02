@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
+import android.widget.NumberPicker;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -27,11 +28,16 @@ public class LogActivity extends ActionBarActivity {
     private String beliefName = null;
     private String behaviorName = null;
     private String annotation = null;
+    private NumberPicker numPicker = null;
 
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log);
+        numPicker = (NumberPicker) findViewById(R.id.moodIntensity);
+        numPicker.setMinValue(1);
+        numPicker.setMaxValue(10);
+        numPicker.setWrapSelectorWheel(false); //makes it so you can't keep spinning
         expList = (ExpandableListView)findViewById(R.id.expList);
         logCategories = LogDataProvider.getLogInfo();
         logTypesList = new ArrayList<String>(logCategories.keySet());
@@ -51,7 +57,6 @@ public class LogActivity extends ActionBarActivity {
 //                Toast.makeText(getBaseContext(), logTypesList.get(groupPosition) + " is collapsed", Toast.LENGTH_LONG).show();
 //            }
 //        });
-
         expList.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
 
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id)
@@ -110,13 +115,13 @@ public class LogActivity extends ActionBarActivity {
 
     public void submit(View view)
     {
+        moodIntensity = numPicker.getValue();
         if(moodName != null && moodIntensity != -1)
         {
             Mood mood = new Mood(moodName, moodIntensity);
             List<Input> inputs = new ArrayList<>();
             EditText annotationText = (EditText) findViewById(R.id.annotation);
             annotation = annotationText.getText().toString();
-
             if(triggerName != null)
             {
                 Input inputTrigger = new Input(triggerName, Input.trigger());
