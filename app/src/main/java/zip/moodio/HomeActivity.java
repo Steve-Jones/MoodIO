@@ -16,31 +16,31 @@ public class HomeActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.homescreen);
+        setContentView(R.layout.activity_home);
 
-        //TABHOST
-        TabHost tabHost = (TabHost) findViewById(R.id.tabHost);
-        tabHost.setup();
-        //LOG TAB
-        TabHost.TabSpec tabSpec = tabHost.newTabSpec("log");
-        tabSpec.setContent(R.id.logTab);
-        tabSpec.setIndicator("Log");
-        tabHost.addTab(tabSpec);
-        //DATA TAB
-        tabSpec = tabHost.newTabSpec("data");
-        tabSpec.setContent(R.id.dataTab);
-        tabSpec.setIndicator("Data");
-        tabHost.addTab(tabSpec);
-        //HELP TAB
-        tabSpec = tabHost.newTabSpec("help");
-        tabSpec.setContent(R.id.helpTab);
-        tabSpec.setIndicator("Help");
-        tabHost.addTab(tabSpec);
-        //SETTINGS TAB
-        tabSpec = tabHost.newTabSpec("settings");
-        tabSpec.setContent(R.id.settingsTab);
-        tabSpec.setIndicator("Settings");
-        tabHost.addTab(tabSpec);
+//        //TABHOST
+//        TabHost tabHost = (TabHost) findViewById(R.id.tabHost);
+//        tabHost.setup();
+//        //LOG TAB
+//        TabHost.TabSpec tabSpec = tabHost.newTabSpec("log");
+//        tabSpec.setContent(R.id.logTab);
+//        tabSpec.setIndicator("Log");
+//        tabHost.addTab(tabSpec);
+//        //DATA TAB
+//        tabSpec = tabHost.newTabSpec("data");
+//        tabSpec.setContent(R.id.dataTab);
+//        tabSpec.setIndicator("Data");
+//        tabHost.addTab(tabSpec);
+//        //HELP TAB
+//        tabSpec = tabHost.newTabSpec("help");
+//        tabSpec.setContent(R.id.helpTab);
+//        tabSpec.setIndicator("Help");
+//        tabHost.addTab(tabSpec);
+//        //SETTINGS TAB
+//        tabSpec = tabHost.newTabSpec("settings");
+//        tabSpec.setContent(R.id.settingsTab);
+//        tabSpec.setIndicator("Settings");
+//        tabHost.addTab(tabSpec);
     }
 
 
