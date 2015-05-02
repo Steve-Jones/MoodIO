@@ -41,6 +41,28 @@ public class Database extends SQLiteOpenHelper{
         this.onCreate(db);
     }
 
+    public boolean addMoodEntry(Event event){
+        ContentValues values = new ContentValues();
+        values.put("time","SELECT date('now');" );
+        String mood = event.getMood().getName();
+        values.put("mood", mood);
+        List<Input> inputs = event.getInputs();
+        for(int i = 0; i < inputs.size(); i++){
+            if(inputs.get(i).getType() == Input.trigger()){
+                values.put("trigger", inputs.get(i).getName());
+            }
+            if(inputs.get(i).getType() == Input.trigger()){
+                values.put("belief", inputs.get(i).getName());
+            }
+            if(inputs.get(i).getType() == Input.trigger()){
+                values.put("behavior", inputs.get(i).getName());
+            }
+        }
+        String annotation = event.getAnnotation();
+        values.put("annotations", annotation);
+        return true;
+    }
+
 
     public String query(){
 
