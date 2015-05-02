@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
+import com.jjoe64.graphview.series.PointsGraphSeries;
 
 
 public class GraphActivity extends ActionBarActivity {
@@ -17,13 +18,19 @@ public class GraphActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graph);
         GraphView graph = (GraphView) findViewById(R.id.graph);
-        LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(new DataPoint[]
-                {
-                    new DataPoint(1,1), new DataPoint(2,2)
-                }
-        );
-
+        DataPoint[] data = new DataPoint[] {new DataPoint(1,1), new DataPoint(2,2), new DataPoint(3,3), new DataPoint(4,4), new DataPoint(100,100)};
+        PointsGraphSeries<DataPoint> series = new PointsGraphSeries<DataPoint>(data);
+        LineGraphSeries<DataPoint> series2 = new LineGraphSeries<DataPoint>(data);
+        series.setShape(PointsGraphSeries.Shape.POINT);
         graph.addSeries(series);
+        graph.addSeries(series2);
+        graph.getViewport().setScalable(true);
+        graph.getViewport().setScrollable(true);
+        graph.getViewport().setXAxisBoundsManual(true);
+        graph.getViewport().setMinX(0);
+        graph.getViewport().setMaxX(10); //will adjust with times
+        graph.setTitle("Mood Graph");
+        graph.setTitleTextSize(90);
     }
 
 

@@ -6,7 +6,9 @@
     android:paddingRight="16dp"
     android:paddingTop="16dp"
     android:paddingBottom="16dp"
-    tools:context="zip.moodio.LogActivity">
+    tools:context="zip.moodio.LogActivity"
+    android:focusable="true"
+    android:focusableInTouchMode="true" > <!-- focusable stuff stopped keyboard from popping up when log was pressed -->
 
     <EditText
         android:id="@+id/annotation"
@@ -14,7 +16,8 @@
         android:layout_height="100dp"
         android:text="Enter annotation here..."
         android:layout_above="@+id/submit"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+         />
 
     <ExpandableListView
         android:id="@+id/expList"

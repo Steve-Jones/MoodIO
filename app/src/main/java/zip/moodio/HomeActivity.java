@@ -78,4 +78,16 @@ public class HomeActivity extends ActionBarActivity {
         startActivity(intent);
     }
 
+    public void goToHelpScreen(View view)
+    {
+        Intent intent = new Intent(HomeActivity.this, HelpActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToSettingsScreen(View view)
+    {
+        Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
+        startActivity(intent);
+    }
+
 }
