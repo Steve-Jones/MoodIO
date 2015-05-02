@@ -72,4 +72,10 @@ public class HomeActivity extends ActionBarActivity {
         startActivity(intent);
     }
 
+    public void goToGraphScreen(View view)
+    {
+        Intent intent = new Intent(HomeActivity.this, GraphActivity.class);
+        startActivity(intent);
+    }
+
 }

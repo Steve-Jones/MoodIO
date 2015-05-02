@@ -146,6 +146,11 @@ public class LogActivity extends ActionBarActivity {
             }
 
             Event event = new Event(mood, inputs, annotation);
+
+            try(Exception e)
+            {
+                Database database = new Database(this);
+            }
             Toast.makeText(getBaseContext(), "You have successfully logged an entry", Toast.LENGTH_LONG).show();
             //ZJB add event to database here
         }
