@@ -20,14 +20,26 @@ public class LogDataProvider
         moods.add("Calm");
         List<String> triggers = new ArrayList<String>();
         triggers.add("Finals Week");
+        triggers.add("Finals Week");
+        triggers.add("Finals Week");
+        triggers.add("Finals Week");
+        triggers.add("Finals Week");
         List<String> beliefs = new ArrayList<String>();
+        beliefs.add("I will fail.");
+        beliefs.add("I will fail.");
+        beliefs.add("I will fail.");
+        beliefs.add("I will fail.");
         beliefs.add("I will fail.");
         List<String> behaviors = new ArrayList<String>();
         behaviors.add("I will not study.");
-        logs.put("Moods", moods);
-        logs.put("Triggers", triggers);
-        logs.put("Beliefs", beliefs);
+        behaviors.add("I will not study.");
+        behaviors.add("I will not study.");
+        behaviors.add("I will not study.");
+        behaviors.add("I will not study.");
         logs.put("Behaviors", behaviors);
+        logs.put("Triggers", triggers);
+        logs.put("Moods", moods);
+        logs.put("Beliefs", beliefs);
         return logs;
     }
 }
