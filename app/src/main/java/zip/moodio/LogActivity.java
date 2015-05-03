@@ -34,16 +34,21 @@ public class LogActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_log);
-        numPicker = (NumberPicker) findViewById(R.id.moodIntensity);
-        numPicker.setMinValue(1);
-        numPicker.setMaxValue(10);
-        numPicker.setWrapSelectorWheel(false); //makes it so you can't keep spinning
-        expList = (ExpandableListView)findViewById(R.id.expList);
-        logCategories = LogDataProvider.getLogInfo();
-        logTypesList = new ArrayList<String>(logCategories.keySet());
-        logsAdapter = new LogsAdapter(this, logCategories, logTypesList);
-        expList.setAdapter(logsAdapter);
+        runOnUiThread(new Runnable() {
+            public void run() {
+                setContentView(R.layout.activity_log);
+                numPicker = (NumberPicker) findViewById(R.id.moodIntensity);
+                numPicker.setMinValue(1);
+                numPicker.setMaxValue(10);
+                numPicker.setWrapSelectorWheel(false); //makes it so you can't keep spinning
+                expList = (ExpandableListView) findViewById(R.id.expList);
+                logCategories = LogDataProvider.getLogInfo();
+                logTypesList = new ArrayList<String>(logCategories.keySet());
+                logsAdapter = new LogsAdapter(getBaseContext(), logCategories, logTypesList);
+                expList.setAdapter(logsAdapter);
+            }
+        });
+
 
 //        expList.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
 //

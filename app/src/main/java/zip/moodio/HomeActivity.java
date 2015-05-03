@@ -16,7 +16,12 @@ public class HomeActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        runOnUiThread(new Runnable() {
+            public void run() {
+                setContentView(R.layout.activity_home);
+            }
+        });
+
 
 //        //TABHOST
 //        TabHost tabHost = (TabHost) findViewById(R.id.tabHost);

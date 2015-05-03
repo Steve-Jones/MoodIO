@@ -37,7 +37,14 @@ public class GraphActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graph);
-        createGraph();
+
+        runOnUiThread(new Runnable() {
+            public void run()
+            {
+                createGraph();
+            }
+        });
+
     }
 
 
@@ -115,28 +122,33 @@ public class GraphActivity extends ActionBarActivity {
     protected void onResume()
     {
         super.onResume();
-        DataPoint[] oldData = data;
-        List<DataPoint> temp = Event.getData();
-        int tempDataSize = (data.length + temp.size());
-        DataPoint[] tempData = new DataPoint[tempDataSize];
-        for(int i=data.length;i<tempDataSize;i++)
-        {
-            tempData[i] = temp.get(i-data.length);
-        }
-        if(!temp.isEmpty())
-        {
-            for(int i=0;i<data.length;i++)
-            {
-                tempData[i] = data[i];
-            }
+        runOnUiThread(new Runnable() {
+            public void run() {
+                DataPoint[] oldData = data;
+                List<DataPoint> temp = Event.getData();
+                int tempDataSize = (data.length + temp.size());
+                DataPoint[] tempData = new DataPoint[tempDataSize];
+                for(int i=data.length;i<tempDataSize;i++)
+                {
+                    tempData[i] = temp.get(i-data.length);
+                }
+                if(!temp.isEmpty())
+                {
+                    for(int i=0;i<data.length;i++)
+                    {
+                        tempData[i] = data[i];
+                    }
 
-            data = tempData;
-        }
-        if(oldData != data)
-        {
-            series.resetData(data);
-            series2.resetData(data);
-        }
+                    data = tempData;
+                }
+                if(oldData != data)
+                {
+                    series.resetData(data);
+                    series2.resetData(data);
+                }
+            }
+        });
+
 
     }
 
