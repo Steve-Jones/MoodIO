@@ -13,6 +13,7 @@
     <string name="title_section3">Section 3</string>
     <string name="title_activity_tab">TabActivity</string>
     <string name="title_activity_help">HelpActivity</string>
+    <string name="sahilAdvice">Go to sleep \n\nDrink water \n\nStop thinking and meditate!</string>
     <string name="advice">Dear User, \n\nIt has become apparent that you should see a therapist at your earliest convenience. With the help of a professional and continuous use of this application,
         a greater understanding of your moods will be achieved.</string>
     <string name="title_activity_settings">SettingsActivity</string>

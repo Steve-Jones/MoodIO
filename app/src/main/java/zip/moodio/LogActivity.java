@@ -169,4 +169,10 @@ public class LogActivity extends ActionBarActivity {
         Intent intent = new Intent(LogActivity.this, HomeActivity.class);
         startActivity(intent);
     }
+
+    public void goToHomeScreen(View view)
+    {
+        Intent intent = new Intent(LogActivity.this, HomeActivity.class);
+        startActivity(intent);
+    }
 }
