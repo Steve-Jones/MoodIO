@@ -12,6 +12,7 @@ import android.widget.NumberPicker;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -146,9 +147,10 @@ public class LogActivity extends ActionBarActivity {
             }
 
             Event event = new Event(mood, inputs, annotation);
-
-            Database database = new Database(this);
-            database.addMoodEntry(event);
+            Date date = new Date();
+            event.addDataPoint(date.getTime(), moodIntensity);
+            //Database database = new Database(this);
+            //database.addMoodEntry(event);
 
             Toast.makeText(getBaseContext(), "You have successfully logged an entry", Toast.LENGTH_LONG).show();
             //ZJB add event to database here

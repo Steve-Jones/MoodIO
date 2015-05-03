@@ -10,8 +10,18 @@
     tools:context="zip.moodio.GraphActivity">
 
     <com.jjoe64.graphview.GraphView
+        android:layout_above="@+id/homeButton"
         android:id="@+id/graph"
         android:layout_width="match_parent"
         android:layout_height="fill_parent" />
+
+    <Button
+        android:id="@+id/homeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Home"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="goToHomeScreen" />
 
 </RelativeLayout>

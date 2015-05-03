@@ -1,7 +1,10 @@
 package zip.moodio;
 
-import java.sql.Timestamp;
-import java.util.Date;
+//import java.sql.Timestamp;
+//import java.util.Date;
+import com.jjoe64.graphview.series.DataPoint;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,6 +15,7 @@ public class Event
     private Mood mood = null;
     private List<Input> inputs = null;
     private String annotation = null;
+    private static List<DataPoint> data = new ArrayList<>();
     //private Timestamp timestamp = null;
     public Event(Mood mood, List<Input> inputs, String annotation)
     {
@@ -56,6 +60,19 @@ public class Event
         return annotation;
     }
 
+    public void addDataPoint(long time, int intensity)
+    {
+        DataPoint dataPoint = new DataPoint(time, intensity);
+        data.add(dataPoint);
+    }
+
+    public static List<DataPoint> getData()
+    {
+        return data;
+    }
+
+
+
 //    public void setTimeStamp()
 //    {
 //        Date date = new Date();
@@ -63,9 +80,9 @@ public class Event
 //    }
 //
 //
-//    public Timestamp getTimestamp()
+//    public long getTimestamp()
 //    {
-//        return timestamp;
+//        return timestamp.getTime();
 //    }
 
 }
