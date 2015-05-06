@@ -33,14 +33,14 @@ public class GraphActivity extends ActionBarActivity {
     private PointsGraphSeries<DataPoint> series = null;
     private LineGraphSeries<DataPoint> series2 = null;
     private GraphView graph;
+    //private List<DataPoint> dataPoints = new ArrayList<>();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_graph);
 
         runOnUiThread(new Runnable() {
-            public void run()
-            {
+            public void run() {
+                setContentView(R.layout.activity_graph);
                 createGraph();
             }
         });
@@ -95,6 +95,23 @@ public class GraphActivity extends ActionBarActivity {
                         new DataPoint(d5, 9),
                         new DataPoint(d6, 3),
                 };
+
+        if(!Event.getEvents().isEmpty())
+        {
+                for(int i=0;i<6;i++)
+                {
+                    System.out.println("Loop: " + Event.getEvents().get(0).getMood().getIntensity());
+                    Event.getEvents().remove(0);
+                }
+        }
+
+        Event.getEvents().add(0, new Event(new Mood("Happy", 7), null, null, data[0]));
+        Event.getEvents().add(1, new Event(new Mood("Sad", 2), null, null, data[1]));
+        Event.getEvents().add(2, new Event(new Mood("Stressed", 5), null, null, data[2]));
+        Event.getEvents().add(3, new Event(new Mood("Excited", 1), null, null, data[3]));
+        Event.getEvents().add(4, new Event(new Mood("Calm", 9), null, null, data[4]));
+        Event.getEvents().add(5, new Event(new Mood("Happy", 3), null, null, data[5]));
+
     }
 
     private String createDate(long timeInMillis) //manually converting millis into a date
@@ -126,21 +143,23 @@ public class GraphActivity extends ActionBarActivity {
             public void run() {
                 DataPoint[] oldData = data;
                 List<DataPoint> temp = Event.getData();
-                int tempDataSize = (data.length + temp.size());
+                int tempDataSize = temp.size();
                 DataPoint[] tempData = new DataPoint[tempDataSize];
-                for(int i=data.length;i<tempDataSize;i++)
+                for(int i=0;i<tempDataSize;i++)
                 {
-                    tempData[i] = temp.get(i-data.length);
+                    tempData[i] = temp.get(i);
+                    System.out.println(tempData[i].getY());
                 }
-                if(!temp.isEmpty())
-                {
-                    for(int i=0;i<data.length;i++)
-                    {
-                        tempData[i] = data[i];
-                    }
-
-                    data = tempData;
-                }
+//                if(!temp.isEmpty())
+//                {
+//                    for(int i=0;i<data.length;i++)
+//                    {
+//                        tempData[i] = data[i];
+//                    }
+//
+//                    data = tempData;
+//                }
+                data = tempData;
                 if(oldData != data)
                 {
                     series.resetData(data);
@@ -162,10 +181,12 @@ public class GraphActivity extends ActionBarActivity {
         series.setShape(PointsGraphSeries.Shape.POINT);
         graph.addSeries(series);
         graph.addSeries(series2);
+
+
         series.setOnDataPointTapListener(new OnDataPointTapListener() {
 
             public void onTap(Series series, DataPointInterface dataPoint) {
-                Toast.makeText(getBaseContext(), "Mood Intensity: " + (short)dataPoint.getY() + "\nLog Date: " + createDate((long)dataPoint.getX()), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(),"Mood: " + Event.getEvents().get(Event.getData().indexOf(dataPoint)).getMood().getName() + "\nMood Intensity: " + (short)dataPoint.getY() + "\nLog Date: " + createDate((long)dataPoint.getX()), Toast.LENGTH_SHORT).show();
             }
         });
         graph.getViewport().setScalable(true);
@@ -184,8 +205,13 @@ public class GraphActivity extends ActionBarActivity {
 
     public void goToHomeScreen(View view)
     {
-        Intent intent = new Intent(GraphActivity.this, HomeActivity.class);
-        startActivity(intent);
+        runOnUiThread(new Runnable() {
+            public void run() {
+                Intent intent = new Intent(GraphActivity.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
 

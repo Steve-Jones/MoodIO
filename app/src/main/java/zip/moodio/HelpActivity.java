@@ -13,7 +13,12 @@ public class HelpActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_help);
+        runOnUiThread(new Runnable() {
+            public void run() {
+                setContentView(R.layout.activity_help);
+            }
+        });
+
     }
 
     @Override
@@ -40,7 +45,12 @@ public class HelpActivity extends ActionBarActivity {
 
     public void goToHomeScreen(View view)
     {
-        Intent intent = new Intent(HelpActivity.this, HomeActivity.class);
-        startActivity(intent);
+        runOnUiThread(new Runnable() {
+            public void run() {
+                Intent intent = new Intent(HelpActivity.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }

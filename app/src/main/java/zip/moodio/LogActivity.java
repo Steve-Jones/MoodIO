@@ -11,6 +11,8 @@ import android.widget.ExpandableListView;
 import android.widget.NumberPicker;
 import android.widget.Toast;
 
+import com.jjoe64.graphview.series.DataPoint;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -24,11 +26,9 @@ public class LogActivity extends ActionBarActivity {
     private ExpandableListView expList;
     private LogsAdapter logsAdapter;
     private String moodName = null;
-    private int moodIntensity = -1;
     private String triggerName = null;
     private String beliefName = null;
     private String behaviorName = null;
-    private String annotation = null;
     private NumberPicker numPicker = null;
 
     protected void onCreate(Bundle savedInstanceState)
@@ -121,6 +121,8 @@ public class LogActivity extends ActionBarActivity {
 
     public void submit(View view)
     {
+        int moodIntensity = -1;
+        String annotation = null;
         moodIntensity = numPicker.getValue();
         if(moodName != null && moodIntensity != -1)
         {
@@ -151,9 +153,10 @@ public class LogActivity extends ActionBarActivity {
                 annotation = null;
             }
 
-            Event event = new Event(mood, inputs, annotation);
-            Date date = new Date();
-            event.addDataPoint(date.getTime(), moodIntensity);
+            DataPoint dataPoint = new DataPoint(System.currentTimeMillis(), moodIntensity);
+            Event event = new Event(mood, inputs, annotation, dataPoint);
+            //Date date = new Date();
+            Event.getEvents().add(event);
             //Database database = new Database(this);
             //database.addMoodEntry(event);
 
@@ -179,7 +182,12 @@ public class LogActivity extends ActionBarActivity {
 
     public void goToHomeScreen(View view)
     {
-        Intent intent = new Intent(LogActivity.this, HomeActivity.class);
-        startActivity(intent);
+        runOnUiThread(new Runnable() {
+            public void run() {
+                Intent intent = new Intent(LogActivity.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }

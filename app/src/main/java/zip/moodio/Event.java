@@ -15,13 +15,15 @@ public class Event
     private Mood mood = null;
     private List<Input> inputs = null;
     private String annotation = null;
-    private static List<DataPoint> data = new ArrayList<>();
+    private static List<Event> events = new ArrayList<>();
+    private DataPoint dataPoint = null;
     //private Timestamp timestamp = null;
-    public Event(Mood mood, List<Input> inputs, String annotation)
+    public Event(Mood mood, List<Input> inputs, String annotation, DataPoint dataPoint)
     {
         this.mood = mood;
         this.inputs = inputs;
         this.annotation = annotation;
+        this.dataPoint = dataPoint;
     }
 
     public boolean haveMood()
@@ -60,15 +62,31 @@ public class Event
         return annotation;
     }
 
-    public void addDataPoint(long time, int intensity)
+    public void setDataPoint(DataPoint dataPoint)
     {
-        DataPoint dataPoint = new DataPoint(time, intensity);
-        data.add(dataPoint);
+        this.dataPoint = dataPoint;
+    }
+
+    public DataPoint getDataPoint()
+    {
+        return dataPoint;
+    }
+
+
+    public static List<Event> getEvents()
+    {
+        return events;
     }
 
     public static List<DataPoint> getData()
     {
-        return data;
+        List<DataPoint> dataPoints = new ArrayList<>();
+        for(int i=0;i<events.size();i++)
+        {
+            dataPoints.add(events.get(i).dataPoint);
+        }
+
+        return dataPoints;
     }
 
 

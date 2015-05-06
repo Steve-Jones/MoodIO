@@ -73,26 +73,43 @@ public class HomeActivity extends ActionBarActivity {
 
     public void goToLogScreen(View view)
     {
-        Intent intent = new Intent(HomeActivity.this, LogActivity.class);
-        startActivity(intent);
+        runOnUiThread(new Runnable() {
+            public void run() {
+                Intent intent = new Intent(HomeActivity.this, LogActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void goToGraphScreen(View view)
     {
-        Intent intent = new Intent(HomeActivity.this, GraphActivity.class);
-        startActivity(intent);
+        runOnUiThread(new Runnable() {
+            public void run() {
+                Intent intent = new Intent(HomeActivity.this, GraphActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void goToHelpScreen(View view)
     {
-        Intent intent = new Intent(HomeActivity.this, HelpActivity.class);
-        startActivity(intent);
+        runOnUiThread(new Runnable() {
+            public void run() {
+                Intent intent = new Intent(HomeActivity.this, HelpActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     public void goToSettingsScreen(View view)
     {
-        Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
-        startActivity(intent);
+        runOnUiThread(new Runnable() {
+            public void run() {
+                Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 }
