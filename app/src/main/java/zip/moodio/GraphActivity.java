@@ -73,17 +73,17 @@ public class GraphActivity extends ActionBarActivity {
     private void generateData()
     {
         Calendar c1 = GregorianCalendar.getInstance();
-        c1.set(2015, 3, 20);
+        c1.set(2015, 3, 21);           //months start at zero
         Date d1 = c1.getTime();
-        c1.set(2015, 3, 22);
+        c1.set(2015, 3, 23);
         Date d2 = c1.getTime();
-        c1.set(2015, 3, 25);
+        c1.set(2015, 3, 26);
         Date d3 = c1.getTime();
-        c1.set(2015, 3, 27);
+        c1.set(2015, 3, 28);
         Date d4 = c1.getTime();
-        c1.set(2015, 3, 30);
+        c1.set(2015, 4, 1);
         Date d5 = c1.getTime();
-        c1.set(2015, 4, 2);
+        c1.set(2015, 4, 3);
         Date d6 = c1.getTime();
 
         data = new DataPoint[]
@@ -98,9 +98,9 @@ public class GraphActivity extends ActionBarActivity {
 
         if(!Event.getEvents().isEmpty())
         {
-                for(int i=0;i<6;i++)
+                for(int i=0;i<data.length;i++)
                 {
-                    System.out.println("Loop: " + Event.getEvents().get(0).getMood().getIntensity());
+                    //System.out.println("Loop: " + Event.getEvents().get(0).getMood().getIntensity());
                     Event.getEvents().remove(0);
                 }
         }
@@ -108,7 +108,7 @@ public class GraphActivity extends ActionBarActivity {
         Event.getEvents().add(0, new Event(new Mood("Happy", 7), null, null, data[0]));
         Event.getEvents().add(1, new Event(new Mood("Sad", 2), null, null, data[1]));
         Event.getEvents().add(2, new Event(new Mood("Stressed", 5), null, null, data[2]));
-        Event.getEvents().add(3, new Event(new Mood("Excited", 1), null, null, data[3]));
+        Event.getEvents().add(3, new Event(new Mood("Angry", 1), null, null, data[3]));
         Event.getEvents().add(4, new Event(new Mood("Calm", 9), null, null, data[4]));
         Event.getEvents().add(5, new Event(new Mood("Happy", 3), null, null, data[5]));
 
@@ -148,7 +148,7 @@ public class GraphActivity extends ActionBarActivity {
                 for(int i=0;i<tempDataSize;i++)
                 {
                     tempData[i] = temp.get(i);
-                    System.out.println(tempData[i].getY());
+                    //System.out.println(tempData[i].getY());
                 }
 //                if(!temp.isEmpty())
 //                {
